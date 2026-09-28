@@ -23,6 +23,12 @@ from mysql.connector import errorcode
 from pymongo import MongoClient
 from pymongo.errors import ServerSelectionTimeoutError
 
+for _fluxo in (sys.stdout, sys.stderr):
+    try:
+        _fluxo.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
+
 PASTA = Path(__file__).resolve().parent
 
 

@@ -40,6 +40,33 @@ python ex05_ordenacao.py          # uma API: só sobe o servidor (127.0.0.1)
 
 Todos os scripts são idempotentes (recriam o próprio estado).
 
----
+### 5. Exercício 10 — antes e depois (prova o ataque, prova a defesa)
+
+O mesmo `exploit.py` roda contra os dois apps: vence os 6 ataques no
+`app_vulneravel.py` e falha em todos no `app_seguro.py`.
+
+```bash
+# pré-requisitos: MySQL no ar (passo 2) e MYSQL_PASSWORD definida (passo 1).
+# a MESMA senha tem que estar no .env E no MYSQL_ROOT_PASSWORD do container.
+
+python ex10/lab_dados.py            # cria a tabela usuarios (3 usuários)
+
+python ex10/exploit.py              # ANTES  -> 6 de 6 ataques bem-sucedidos
+python ex10/exploit.py --seguro     # DEPOIS -> 0 de 6 ataques bem-sucedidos
+python ex10/exploit.py --verificar  # roda os dois e confirma 6/6 e depois 0/6
+python ex10/app_seguro.py --testar  # prova que a defesa não quebrou o recurso
+```
+
+Também é possível subir cada app e testar no navegador:
+
+```bash
+python ex10/app_vulneravel.py       # sobe o app vulnerável em 127.0.0.1:5010
+python ex10/app_seguro.py           # sobe o app seguro     em 127.0.0.1:5011
+```
+
+O laudo com as 10 falhas (código OWASP 2025, impacto e correção) está em
+[`ex10/auditoria.md`](ex10/auditoria.md); duas delas são ausências (sem
+autenticação e sem logging).
+
 
 

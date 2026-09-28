@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard de incidentes</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='ex07.css') }}">
+</head>
+<body>
+  <h1>Dashboard de incidentes (seguro)</h1>
+  <p>Todos os campos passam pelo autoescape do Jinja2. Nenhum usa <code>|safe</code>.</p>
+  <table>
+    <thead><tr><th>Ativo</th><th>Título</th><th>Severidade</th></tr></thead>
+    <tbody>
+    {% for inc in incidentes %}
+      <tr>
+        {# Atributo SEMPRE entre aspas: o autoescape troca " por &#34;, mas
+           num atributo sem aspas um simples espaco ja fecharia o valor. #}
+        <td><img src="/static/icone.png" alt="{{ inc.ativo }}"> {{ inc.ativo }}</td>
+        <td>{{ inc.titulo }}</td>
+        <td>{{ inc.severidade }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

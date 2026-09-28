@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Credenciais / variaveis de ambiente -- NUNCA versionar
+.env
+*.key
+*.pem
+
+# Logs gerados pelas APIs
+logs/
+
+# IDEs / sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

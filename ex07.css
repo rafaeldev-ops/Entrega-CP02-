@@ -1,0 +1,4 @@
+body { font-family: system-ui, sans-serif; margin: 2rem; }
+table { border-collapse: collapse; }
+th, td { border: 1px solid #999; padding: .4rem .8rem; text-align: left; }
+.alerta-inseguro { background: #b00020; color: #fff; padding: 1rem; font-weight: bold; }
